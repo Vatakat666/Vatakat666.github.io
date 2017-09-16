@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/fontello.css">
     <link rel="stylesheet" href="css/fontello-embedded.css">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
     <!-- Фавиконка -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     <!--[if lt IE 9]>
@@ -32,33 +33,33 @@
       <div class="main-overlay"></div>
         <div class="wrapper">
           <div class="main-header">
-            <h1>Александр Масалов </h1>
-            <div class="main-line"></div>
-            <p>Верстка на HTML и CSS <br>Разработка сайтов под ключ</p>
+            <h1 class="animated rotateInUpLeft">Александр Масалов </h1>
+            <div class="main-line animated zoomIn"></div>
+            <p class="animated rotateInUpRight">Верстка на HTML и CSS <br>Разработка сайтов под ключ</p>
           </div>
         </div>
-        <a class="main-down" href="#"><i class="icon-down"></i></a>
+        <a class="main-down" href="#portfolio"><i class="icon-down"></i></a>
       </div> 
 
-      <div class="portfolio">
+      <div class="portfolio" id="portfolio">
         <div class="container">
           <h2 class="section-header">Портфолио</h2>
           <div class="row">
             <div class="col-md-4">
               <div class="portfolio-block">
-              <img src="img/portfolio/1.jpg" alt="Работа №1">
+              <img src="img/portfolio/1.jpg" alt="Работа №1" class="img-work">
               <a data-toggle="modal" data-work='work-1' href="#work">Смотреть работу</a>
               </div>
             </div>
             <div class="col-md-4">
               <div class="portfolio-block">
-              <img src="img/portfolio/2.jpg" alt="Работа №2">
+              <img src="img/portfolio/2.jpg" alt="Работа №2" class="img-work">
               <a data-toggle="modal" data-work='work-2' href="#work">Смотреть работу</a>
               </div>
             </div>
             <div class="col-md-4">
               <div class="portfolio-block">
-              <img src="img/portfolio/3.jpg" alt="Работа №3">
+              <img src="img/portfolio/3.jpg" alt="Работа №3" class="img-work">
               <a data-toggle="modal" data-work='work-3' href="#work">Смотреть работу</a>
               </div>
             </div>
@@ -114,6 +115,21 @@
           var work = $(this).attr('data-work');
           var modal = $('.modal');
           modal.find('.modal-body').load(work+'.html');
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function() {
+        // навигация - плавный скроллинг к якорю
+        $(".slowly").on("click", function (event) {
+          // отменяем стандартную обработку нажатия по ссылке
+          event.preventDefault();
+          // забираем идентификатор бока с атрибута href
+          var id = $(this).attr('href'),
+          // узнаём высоту от начала страницы до блока на который ссылается якорь
+            top = $(id).offset().top;
+            // анимируем переход на расстояние - top за 1500 мс
+            $('body,html').animate({scrollTop: top}, 800);
         });
       });
     </script>
